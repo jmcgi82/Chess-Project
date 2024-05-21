@@ -3,7 +3,7 @@ body {
     padding: 0;
     align-items: center;
     text-align: center;
-    background:rgb(173, 145, 78);
+    background:rgb(136, 116, 69);
 }
 
 * {
@@ -49,7 +49,8 @@ body {
 .white-square {
     width:45px;
     height: 45px;
-    background:white;
+    background:rgb(255, 238, 210);
+    font-size: 32px;
 }
 
 .white-square:hover {
@@ -60,7 +61,8 @@ body {
 .black-square {
     width:45px;
     height: 45px;
-    background:black;
+    background:rgb(73, 71, 71);
+    font-size: 32px;
 }
 
 .black-square:hover {
