@@ -1,6 +1,8 @@
 let board = [];
 let lastSelect = "";
-let currSelect= "";
+let currSelect = "";
+
+let pawn = "";
 
 initialize();
 
@@ -24,15 +26,30 @@ function loadListeners() {
     }
 }
 
-function newSelection(event) 
-{
+function newSelection(event) {
+    if (event.target.innerHTML != "" && currSelect != "") {
+        currSelect.classList.remove("selected")
+        currSelect = event.target;
+        currSelect.classList.add("selected");
 
-    var temp = document.getElementById(currSelect).className;
-    var temp2 = temp.substring(0, temp.length - 8);
-    document.getElementById(currSelect.className = temp2);
-    lastSelect = currSelect;
-    currSelect = event.target;
-    document.getElementById(currSelect).className += " selected";
+        //Possible moves display logic
+        possibleMovesLogic();
+    } else if (currSelect != "" && event.target.innerHTML == "") {
+        event.target.innerHTML = currSelect.innerHTML;
+        currSelect.classList.remove("selected");
+        currSelect.innerHTML = "";
+        currSelect = "";
+        
+        //gameplay rules and logic
+    } else if (event.target.innerHTML != "") {
+        if (currSelect == "") {
+            currSelect = event.target;
+            currSelect.classList.add("selected");
+            possibleMovesLogic();
+        }
+    }
+
+    
 }
 
 function loadPieces() {
@@ -69,4 +86,14 @@ function loadPieces() {
     document.getElementById(board[61]).innerHTML = "&#9816";
     document.getElementById(board[62]).innerHTML = "&#9815";
     document.getElementById(board[63]).innerHTML = "&#9814";
+}
+
+function possibleMovesLogic() {
+    console.log(currSelect.innerHTML);
+    console.log(pawn.innerHTML);
+    if (currSelect.innerText == "&#9817") {
+        
+        document.getElementById(currSelect.id.parseInt() - 10).classList.add("possible-moves");
+        document.getElementById(currSelect.id.parseInt() - 20).classList.add("possible-moves");
+    }
 }

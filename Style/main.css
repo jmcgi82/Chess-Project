@@ -69,3 +69,11 @@ body {
     cursor: pointer;
     background:rgb(242, 225, 185);
 }
+
+.selected {
+    border: solid rgb(148, 198, 198);
+}
+
+.possible-moves {
+    background: rgb(143, 180, 178);
+}
